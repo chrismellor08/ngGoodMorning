@@ -1,0 +1,313 @@
+body {
+	background-size: cover;
+	margin-bottom: 10%;
+  position: fixed;
+}
+
+h1 {
+	font-family: 'Raleway', sans-serif;
+	color: #fff;
+
+}
+
+h3 {
+	font-family: 'Roboto Slab', serif;
+}
+
+/******************Home Page*********************/
+
+.homePanel {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.homePanel h1 {
+	font-size: 4rem;
+}
+
+.signInButton {
+  background-color: #fff;
+  opacity: 0.5;
+}
+
+/******************Main Hub*********************/
+
+.hubContainer {
+  min-width: 150%;
+  height: 750px;
+  background-size: cover;
+}
+
+.mainHub{
+	font-family: 'Raleway', sans-serif;
+	position: fixed;
+	top: 48%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	border-radius: 10px;
+	background-color: rgba(26,26,26,.5);
+	padding-bottom: 3%;
+	padding-top: 3%;
+  max-width: 65%;
+  max-height: 80%;
+}
+
+.mainHub h1 {
+	color: #fff;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.spacer {
+	color: transparent;
+}
+
+.todayContainer {
+	margin: 0 auto;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	border-radius: 10px;
+	opacity: 10%;
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+.tomorrowContainer {
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	border-radius: 10px;
+	opacity: 10%;
+	margin-left: 10%;
+}
+
+.hubToday:hover{
+	background-color: none;
+}
+
+.hubToday:before{
+	border-radius: 10px;
+}
+
+.hubTomorrow:before{
+	border-radius: 10px;
+}
+
+.hubToday {
+	border-radius: 10px;
+	background: #fff;
+	background: rgba(255,255,255,0.90);
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-size: 1.5rem;
+	padding-top:3%;
+	padding-bottom: 3%;
+	border-radius: 10px;
+	width: 50%;
+  margin-left:5%;
+}
+
+.hubTomorrow{
+	border-radius: 10px;
+	background: #fff;
+	background: rgba(255,255,255,0.90);
+	margin-bottom: 5%;
+	font-size: 1.5rem;
+	padding-top:3%;
+	padding-bottom: 3%;
+	width: 50%;
+  margin-left:5%;
+}
+
+.hubHeadingText{
+	font-size: 5rem;
+}
+
+.hubSettings {
+	text-align: center;
+	margin-bottom: 3%;
+}
+
+.timeContainer {
+	border-bottom: 3px solid white;
+	width: 80%;
+	margin: 0 auto;
+}
+
+/********* weather *********/
+/*
+  Docs at http://http://simpleweatherjs.com
+
+  Look inspired by http://www.degreees.com/
+  Used for demo purposes.
+
+  Weather icon font from http://fonts.artill.de/collection/artill-weather-icons
+
+  DO NOT hotlink the assets/font included in this demo. If you wish to use the same font icon then download it to your local assets at the link above. If you use the links below odds are at some point they will be removed and your version will break.
+  */
+
+  @font-face {
+  	font-family: 'weather';
+  	src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+  	src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+  	url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+  	url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+  	url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+  	font-weight: normal;
+  	font-style: normal;
+  }
+
+  #weather {
+  	margin: 0px auto;
+  	text-align: center;
+  	text-transform: uppercase;
+  }
+
+  i {
+  	color: #fff;
+  	font-family: weather;
+  	font-size: 200px;
+  	font-weight: normal;
+  	font-style: normal;
+  	line-height: 1.0;
+  	text-transform: none;
+  }
+
+  .icon-0:before { content: ":"; }
+  .icon-1:before { content: "p"; }
+  .icon-2:before { content: "S"; }
+  .icon-3:before { content: "Q"; }
+  .icon-4:before { content: "S"; }
+  .icon-5:before { content: "W"; }
+  .icon-6:before { content: "W"; }
+  .icon-7:before { content: "W"; }
+  .icon-8:before { content: "W"; }
+  .icon-9:before { content: "I"; }
+  .icon-10:before { content: "W"; }
+  .icon-11:before { content: "I"; }
+  .icon-12:before { content: "I"; }
+  .icon-13:before { content: "I"; }
+  .icon-14:before { content: "I"; }
+  .icon-15:before { content: "W"; }
+  .icon-16:before { content: "I"; }
+  .icon-17:before { content: "W"; }
+  .icon-18:before { content: "U"; }
+  .icon-19:before { content: "Z"; }
+  .icon-20:before { content: "Z"; }
+  .icon-21:before { content: "Z"; }
+  .icon-22:before { content: "Z"; }
+  .icon-23:before { content: "Z"; }
+  .icon-24:before { content: "E"; }
+  .icon-25:before { content: "E"; }
+  .icon-26:before { content: "3"; }
+  .icon-27:before { content: "a"; }
+  .icon-28:before { content: "A"; }
+  .icon-29:before { content: "a"; }
+  .icon-30:before { content: "A"; }
+  .icon-31:before { content: "6"; }
+  .icon-32:before { content: "1"; }
+  .icon-33:before { content: "6"; }
+  .icon-34:before { content: "1"; }
+  .icon-35:before { content: "W"; }
+  .icon-36:before { content: "1"; }
+  .icon-37:before { content: "S"; }
+  .icon-38:before { content: "S"; }
+  .icon-39:before { content: "S"; }
+  .icon-40:before { content: "M"; }
+  .icon-41:before { content: "W"; }
+  .icon-42:before { content: "I"; }
+  .icon-43:before { content: "W"; }
+  .icon-44:before { content: "a"; }
+  .icon-45:before { content: "S"; }
+  .icon-46:before { content: "U"; }
+  .icon-47:before { content: "S"; }
+
+  #weather h2 {
+  	margin: 0 0 8px;
+  	color: #fff;
+  	font-size: 75px;
+  	font-weight: 300;
+  	text-align: center;
+  	text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  #weather ul {
+  	margin: 0;
+  	padding: 0;
+  }
+
+  #weather li {
+  	color: #fff;
+  	padding: 20px;
+  	display: inline;
+  	border-radius: 5px;
+  	font-size: 4em;
+  }
+  #weather .time{
+  	font-size: 4rem;
+  }
+
+  #weather .currently {
+  	margin: 0 20px;
+  	font-size: 1rem;
+  }
+  #weather .location {
+  	margin: 0 20px;
+  	font-size: 1rem;
+  }
+
+  .time {
+  	margin-top: 10%;
+  }
+
+
+
+  .weatherStuff {
+
+  	margin-bottom: 10%;
+  }
+
+
+
+  .fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+  }
+
+  .fullscreen-bg__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+
+
+  @media (max-width: 767px) {
+    .fullscreen-bg {
+      background: url('/Lake%20Shore%20Sunrise%20HD%20Looping%20Background%20by%20Motion%20Worship.mp4') center center / cover no-repeat;
+    }
+
+    .fullscreen-bg__video {
+      display: none;
+    }
+  }
+
