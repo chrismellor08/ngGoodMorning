@@ -44,9 +44,13 @@ h3 {
 /******************Main Hub*********************/
 
 .hubContainer {
-  min-width: 150%;
-  height: 750px;
-  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .mainHub{

@@ -33,9 +33,9 @@ $scope.logout = () => {
 
 $scope.calculateTravelTime = function(){
   AlarmFactory.postMorningObj($scope.newAlarmTime);
-    let handleResponse = function(data)
-    {
-      let m = moment();
+  let handleResponse = function(data)
+  {
+    let m = moment();
       // get moment and format as MM/DD/YYYY string
       let formattedTime = m.format("YYYY-MM-DD");
       let arrivalTime = formattedTime + " " + $scope.newAlarmTime.whenToBeThere;
@@ -63,8 +63,8 @@ $scope.calculateTravelTime = function(){
       url: $scope.newAlarmTime.url,
       dataType: 'jsonp',
       success: function(data) {
-    console.log("dat", data);
-}
+        console.log("dat", data);
+      }
     }).done(handleResponse);
   };
 
@@ -75,7 +75,7 @@ $scope.getLocation = () => {
     let coordsObj = {lat:data.coords.latitude, long:data.coords.longitude};
     let coords = coordsObj.lat + ", " + coordsObj.long;
     $scope.newAlarmTime.whereImAt = coords;
-     let wtg = $scope.newAlarmTime.whereImGoing.split(' ').join('%2C+').split(',').join('');
+    let wtg = $scope.newAlarmTime.whereImGoing.split(' ').join('%2C+').split(',').join('');
     //get the location i'm currently at
     let wia = $scope.newAlarmTime.whereImAt.split(' ').join('%2C+').split(',').join('');
     //Get the time I need to leave(make an api call to mapquest to get route duration)
