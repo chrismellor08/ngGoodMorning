@@ -18,10 +18,10 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, U
 // }
 
 $scope.newAlarmTime = {
-  whenToBeThere:  "1:48am",
+  whenToBeThere:  "",
   whereImAt: "",
-  whereImGoing: "nashville, tn",
-  bufferTime: "0:01",
+  whereImGoing: "",
+  bufferTime: "",
   url: "",
   alarmTime: null,
   countdown: null
