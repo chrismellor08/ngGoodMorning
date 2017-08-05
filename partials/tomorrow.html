@@ -1,0 +1,50 @@
+<div ng-init="hubToday()" class="hubContainer container" id="body" ng-style="{'background-image':'url({{newTodayHub.background}})'}">
+
+  <div id="weather">
+
+   <div class="container mainHub">
+     <a class="logout pull-right;" ng-click="logout()"><p>Logout</p></a>
+     <div class="hubHeading">
+      <h1 class="hubHeadingText">Tell me about your day, Chris</h1>
+    </div>
+    <div class="todayStatus">
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="timeContainer">
+          <div class="whereToGo">
+           Where do you need to go?
+           <input type="text" ng-model"newAlarmTime.whereImGoing">
+         </div>
+         <div class="whenToBeThere">
+           When do you need to be there?
+           <input type="text" ng-model"newAlarmTime.whenToBeThere">
+         </div>
+         <div class="howLongReady">
+           How long do you need to get ready?
+           <input type="text" ng-model"newAlarmTime.bufferTime">
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-xs-6">
+      <div class="col-xs-12">
+        <div class="container todayContainer">
+          <div class=" hubToday col-xs-12 hvr-bounce-in" ng-click="getLocation()">Make it happen!
+          </div>
+        </div>
+      </div>
+       <!--  <div class="col-xs-12">
+          <div class="container tomorrowContainer">
+            <div class="hubTomorrow col-xs-12 hvr-bounce-in">What's going on tomorrow?
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="col-xs-6">
+      </div>
+    </div>
+  </div>
+</div>
+</div>

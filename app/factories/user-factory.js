@@ -1,13 +1,16 @@
 'use strict';
 
-GoodMorning.factory('UserFactory', function($q, $http, FirebaseUrl, FBCreds) {
+GoodMorning.factory('UserFactory', function($q, $http, FirebaseUrl, FBCreds, geolocation) {
 
 let userInfo = [];
+let coords = {};
 
   var config = {
     apiKey: FBCreds.apiKey,
     authDomain: FBCreds.authDomain
   };
+
+
 
   firebase.initializeApp(config);
 

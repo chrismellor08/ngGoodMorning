@@ -1,6 +1,6 @@
 'use strict';
 
-GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window) {
+GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window, geolocation) {
 
   // let getUserHub = (userHub) => {
   //   return $q( (resolve, reject) => {

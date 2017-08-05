@@ -1,6 +1,6 @@
 'use strict';
 
-let GoodMorning = angular.module("GoodMorning", ["ngRoute", "angularMoment"])
+let GoodMorning = angular.module("GoodMorning", ["ngRoute", "angularMoment", "geolocation"])
 .constant("FirebaseUrl", "https://ng-goodmorning.firebaseio.com/");
 
 GoodMorning.config( ($routeProvider) => {
@@ -13,17 +13,9 @@ GoodMorning.config( ($routeProvider) => {
     templateUrl: 'partials/userHub.html',
     controller: 'UserHubController'
   })
-  .when('/todos/new', {
-    templateUrl: 'partials/todo-form.html',
-    controller: 'TodoAddController'
-  })
-  .when('/todos/detail/:todoId', {
-    templateUrl: 'partials/todo-detail.html',
-    controller: 'TodoDetailController'
-  })
-  .when('/todos/edit/:todoId', {
-    templateUrl: 'partials/todo-form.html',
-    controller: 'TodoEditController'
+  .when('/userHub/tomorrow', {
+    templateUrl: 'partials/tomorrow.html',
+    controller: 'AlarmController'
   })
   .otherwise('/');
 });

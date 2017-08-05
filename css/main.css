@@ -4,13 +4,21 @@ body {
   position: fixed; }
 
 h1 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Arvo', serif;
   color: #fff; }
 
 h3 {
-  font-family: 'Roboto Slab', serif; }
+  font-family: 'Arvo', serif; }
 
 /******************Home Page*********************/
+.logout {
+  margin-top: 20px;
+  color: darkgrey;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 2%; }
+
 .homePanel {
   position: fixed;
   top: 50%;
@@ -19,7 +27,7 @@ h3 {
   text-align: center; }
 
 .homePanel h1 {
-  font-size: 4rem; }
+  font-size: 7rem; }
 
 .signInButton {
   background-color: #fff;
@@ -39,7 +47,7 @@ h3 {
   transform: translate(-50%, -50%);
   text-align: center;
   border-radius: 10px;
-  background-color: rgba(26, 26, 26, 0.5);
+  background-color: rgba(26, 26, 26, 0.7);
   padding-bottom: 3%;
   padding-top: 3%;
   max-width: 65%;
@@ -57,7 +65,7 @@ h3 {
 
 .todayContainer {
   margin: 0 auto;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Arvo', serif;
   text-align: center;
   border-radius: 10px;
   opacity: 10%;
@@ -81,12 +89,13 @@ h3 {
   border-radius: 10px; }
 
 .hubToday {
+  font-family: 'Arvo', serif;
   border-radius: 10px;
   background: #fff;
   background: rgba(255, 255, 255, 0.9);
   margin-top: 5%;
   margin-bottom: 5%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding-top: 3%;
   padding-bottom: 3%;
   border-radius: 10px;
@@ -105,6 +114,7 @@ h3 {
   margin-left: 5%; }
 
 .hubHeadingText {
+  margin-top: 2%;
   font-size: 5rem; }
 
 .hubSettings {
@@ -112,9 +122,17 @@ h3 {
   margin-bottom: 3%; }
 
 .timeContainer {
-  border-bottom: 3px solid white;
   width: 80%;
   margin: 0 auto; }
+
+.time {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 7em;
+  color: #fff;
+  margin-top: 10%; }
+
+.Its {
+  font-size: 15px; }
 
 /********* weather *********/
 /*
@@ -310,9 +328,6 @@ i {
   border-radius: 5px;
   font-size: 4em; }
 
-#weather .time {
-  font-size: 4rem; }
-
 #weather .currently {
   margin: 0 20px;
   font-size: 1rem; }
@@ -320,9 +335,6 @@ i {
 #weather .location {
   margin: 0 20px;
   font-size: 1rem; }
-
-.time {
-  margin-top: 10%; }
 
 .weatherStuff {
   margin-bottom: 10%; }
