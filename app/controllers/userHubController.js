@@ -60,8 +60,9 @@ $scope.hubToday = () => {
       	timeArray.shift();
       	let currentTime = timeArray.join("");
       	console.log(currentTime);
+        console.log("TA",timeArray);
       }
-      if(greetingTime == "evening" && timeArray[1] < 7){
+      if(greetingTime == "evening" && timeArray[0] > 1 && timeArray[1] < 7){
       	$scope.newTodayHub.background = "/img/Black_Mountain_Sunset-27527.jpg";
       }
       else if(greetingTime == "morning"){
