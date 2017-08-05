@@ -18,10 +18,10 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, U
 // }
 
 $scope.newAlarmTime = {
-  whenToBeThere:  "9:00am",
+  whenToBeThere:  "1:48am",
   whereImAt: "",
   whereImGoing: "nashville, tn",
-  bufferTime: "0:30",
+  bufferTime: "0:01",
   url: "",
   alarmTime: null,
   countdown: null
@@ -86,21 +86,21 @@ $scope.getLocation = () => {
   });
 };
 
-// $scope.alarmInterval = $window.setInterval(function()
-// {
-//   if($scope.newAlarmTime.alarmTime()!==null)
-//   {
-//     let now = moment();
-//     if(now.diff($scope.newAlarmTime.alarmTime, 'seconds') > 0)
-//     {
-//             // alarmSound.play();
-//             console.log("GETUP!");
-//               // $scope.newAlarmTime.alarmTime(null);
-//               // $scope.newAlarmTime.countdown(null);
-//             }
-//           }
+$scope.alarmInterval = $window.setInterval(function()
+{
+  if($scope.newAlarmTime.alarmTime!==null)
+  {
+    let now = moment();
+    if(now.diff($scope.newAlarmTime.alarmTime, 'seconds') > 0)
+    {
+            // alarmSound.play();
+            console.log("GETUP!");
+              // $scope.newAlarmTime.alarmTime(null);
+              // $scope.newAlarmTime.countdown(null);
+            }
+          }
 
-//         }, 1000);
+        }, 1000);
 
 
 $scope.alarmTimeFormatted =(function()
