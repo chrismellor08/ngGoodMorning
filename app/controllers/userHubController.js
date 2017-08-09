@@ -51,6 +51,23 @@ $scope.login = () => {
     });
   };
 
+let modal = new tingle.modal({
+  footer: true,
+  stickyFooter: false,
+  closeMethods: ['overlay', 'button', 'escape'],
+  closeLabel: "Close",
+  cssClass: ['custom-class-1', 'custom-class-2'],
+  onOpen: function() {
+  },
+  onClose: function() {
+  },
+  beforeClose: function() {
+        // here's goes some logic
+        // e.g. save content before closing the modal
+        return true; // close the modal
+      }
+    });
+
 
 // $localStorage.name = UserFactory.getThisUser();
 
@@ -78,6 +95,11 @@ $scope.login = () => {
   $scope.hubToday = () => {
 //getting and formatting the time of day
     $scope.userAuth();
+    modal.setContent(`<h2>Hello, ${$scope.newTodayHub.name}!</h2><br>Welcome to Good Morning<br><br> Good Morning is an app designed to make sure you never have a stressful morning again. Simply enter a few details about your day the night before, and allow us to generate an alarm clock for you based on where you need to go, traffic delays, weather conditions, and anything you might need to do before you get to where you're going!`);
+     modal.addFooterBtn('Sounds Good!', 'tingle-btn tingle-btn--primary', function() {
+        modal.close();
+      });
+     modal.open();
     $scope.getLocation();
     $scope.m = moment();
     let m = $scope.m;
