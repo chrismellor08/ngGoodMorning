@@ -1,12 +1,26 @@
 'use strict';
 
-GoodMorning.controller('UserController', function($scope, $window, UserFactory){
+GoodMorning.controller('UserController', function($scope, $routeParams, $window, UserFactory, UserNameFactory, UserHubFactory){
+
+$scope.user = {
+  userid: ""
+};
+
+
+
+$scope.userName = UserNameFactory.user.push();
+console.log("BLAM", $scope.userName);
+
+
 
   $scope.login = () => {
     UserFactory.loginUser()
     .then( (userData) => {
+      $scope.userName = userData.additionalUserInfo.profile.given_name;
+      $scope.uid = userData.user.uid;
       console.log("userData", userData);
-      $window.location.href = '#!/userHub';
+      console.log("KAPOW", UserFactory.userInfo);
+      $window.location.href = `#!/userHub/`;
 
     });
   };

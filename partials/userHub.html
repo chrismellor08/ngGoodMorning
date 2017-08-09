@@ -1,38 +1,19 @@
-<div ng-init="hubToday()" class="hubContainer container" id="body" ng-style="{'background-image':'url({{newTodayHub.background}})'}">
-
+<div ng-init="hubToday()"  class="hubContainer ng-cloak container" id="body" ng-style="{'background-image':'url({{newTodayHub.background}})'}">
 	<div id="weather">
-
    <div class="container mainHub">
-   <a class="logout pull-right;" ng-click="logout()"><p>Logout</p></a>
-    <div class="hubHeading">
-      <h1 class="hubHeadingText">Good {{newTodayHub.greetingTime}}, Chris</h1>
+     <a class="logout pull-right;" ng-click="logout()"><p>Logout</p></a>
+     <div class="hubHeading">2
+      <h1 class="hubHeadingText">Good {{newTodayHub.greetingTime}}, {{newTodayHub.name}}</h1>
     </div>
-    <div class="todayStatus">
+  <div class="row">
+    <div class="timeContainer col-md-12">
+      {{newTodayHub.currentTime}}
     </div>
+</div>
     <div class="row">
-      <div class="col-xs-12">
-        <div class="timeContainer">
-
-            <div class="time theTime">{{newTodayHub.currentTime}}</div>
+      <div class="container todayContainer">
+        <div class="hubToday col-md-12 hvr-bounce-in" ng-click="tomorrow()">Plan your morning
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="col-xs-12">
-          <div class="container todayContainer">
-            <div class=" hubToday col-xs-12 hvr-bounce-in" ng-click="tomorrow()">Plan your morning
-            </div>
-          </div>
-        </div>
-       <!--  <div class="col-xs-12">
-          <div class="container tomorrowContainer">
-            <div class="hubTomorrow col-xs-12 hvr-bounce-in">What's going on tomorrow?
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class="col-xs-6">
       </div>
     </div>
   </div>

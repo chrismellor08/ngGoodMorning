@@ -2,6 +2,10 @@
 <html>
 <head>
 	<title>Good Morning</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada|Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Miriam+Libre:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Roboto+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Arvo:400i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
@@ -9,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/hover.css">
+	<link rel="stylesheet" href="/lib/node_modules/tingle.js/dist/tingle.css">
 </head>
 
 <body ng-app="GoodMorning">
@@ -22,11 +27,16 @@
 	</script>
 	<script type="text/javascript" src="lib/node_modules/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/node_modules/angular-route/angular-route.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+	<script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+	<script type="text/javascript" src="/lib/bower_components/ngstorage/ngStorage.min.js"></script>
+	<link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
 	<script src="https://rawgithub.com/arunisrael/angularjs-geolocation/master/dist/angularjs-geolocation.min.js"></script>
 	<script src="lib/node_modules/firebase/firebase.js"></script>
 	<script type="text/javascript" src="app/moment.js"></script>
 	<script src="/lib/node_modules/moment/moment.js"></script>
 	<script type="text/javascript" src="/lib/node_modules/angular-moment/angular-moment.js"></script>
+	<script type="text/javascript" src="/lib/node_modules/tingle.js/dist/tingle.min.js"></script>
 
 	<!-- app files -->
 	<script type="text/javascript" src="app/app.js"></script>
@@ -35,6 +45,7 @@
 	<script src="app/values/fb-creds.js"></script>
 	<script src="app/factories/userHubFactory.js"></script>
 	<script src="app/factories/user-Factory.js"></script>
+	<script src="app/factories/userNameFactory.js"></script>
 	<script src="app/factories/alarmFactory.js"></script>
 
 	<!-- controllers -->

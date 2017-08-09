@@ -1,14 +1,21 @@
 body {
   background-size: cover;
   margin-bottom: 10%;
-  position: fixed; }
+  position: fixed;
+  font-family: 'Quicksand', sans-serif; }
 
 h1 {
-  font-family: 'Arvo', serif;
+  font-family: 'Quicksand', sans-serif;
   color: #fff; }
 
 h3 {
-  font-family: 'Arvo', serif; }
+  text-align: center;
+  font-family: 'Raleway', sans-serif; }
+
+p {
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  letter-spacing: 2px; }
 
 /******************Home Page*********************/
 .logout {
@@ -31,7 +38,13 @@ h3 {
 
 .signInButton {
   background-color: #fff;
-  opacity: 0.5; }
+  opacity: 0.7;
+  width: 180px;
+  font-family: "Dosis", sans-serif; }
+
+.signInButton:hover {
+  background-color: #fff;
+  opacity: 0.9; }
 
 /******************Main Hub*********************/
 .hubContainer {
@@ -40,7 +53,8 @@ h3 {
   left: 0;
   /* Preserve aspet ratio */
   min-width: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  background-size: cover; }
 
 .mainHub {
   font-family: 'Raleway', sans-serif;
@@ -68,19 +82,21 @@ h3 {
 
 .todayContainer {
   margin: 0 auto;
-  font-family: 'Arvo', serif;
+  font-family: 'Quicksand', sans-serif;
   text-align: center;
   border-radius: 10px;
   opacity: 10%;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-left: 10%; }
 
 .tomorrowContainer {
-  font-family: 'Raleway', sans-serif;
-  text-align: center;
-  border-radius: 10px;
-  opacity: 10%;
-  margin-left: 10%; }
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover; }
 
 .hubToday:hover {
   background-color: none; }
@@ -92,26 +108,15 @@ h3 {
   border-radius: 10px; }
 
 .hubToday {
-  font-family: 'Arvo', serif;
+  font-family: 'Quicksand', sans-serif;
   border-radius: 10px;
   background: #fff;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   margin-bottom: 5%;
-  font-size: 2rem;
+  font-size: 3rem;
   padding-top: 2%;
   padding-bottom: 2%;
   border-radius: 10px;
-  width: 50%;
-  margin-left: 5%; }
-
-.hubTomorrow {
-  border-radius: 10px;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.9);
-  margin-bottom: 5%;
-  font-size: 1.5rem;
-  padding-top: 3%;
-  padding-bottom: 3%;
   width: 50%;
   margin-left: 5%; }
 
@@ -124,17 +129,98 @@ h3 {
   margin-bottom: 3%; }
 
 .timeContainer {
-  width: 80%;
-  margin: 0 auto; }
-
-.time {
-  font-family: 'Roboto Mono', monospace;
+  margin: 0 auto;
+  font-family: 'Inconsolata', monospace;
   font-size: 15rem;
   color: #fff;
-  margin-top: 3%; }
+  margin-top: 3%;
+  letter-spacing: -8px; }
 
-.Its {
-  font-size: 15px; }
+.buffHours {
+  width: 20%; }
+
+.buffMinutes {
+  width: 20%; }
+
+.planningHub {
+  font-family: 'Raleway', sans-serif;
+  position: fixed;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(26, 26, 26, 0.7);
+  padding-bottom: 3%;
+  padding-top: 3%;
+  max-width: 65%;
+  max-height: 80%; }
+
+.planningHub h1 {
+  color: #fff;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.detailsContainer {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: rgba(10, 10, 10, 0.6);
+  border-radius: 10px;
+  width: 70%;
+  margin-left: 15%; }
+
+.whereToGo {
+  padding-bottom: 2%; }
+
+.whenToBeThere {
+  padding-bottom: 2%; }
+
+.whereInput {
+  margin: 0 auto;
+  width: 400px; }
+
+.whenInput {
+  margin: 0 auto;
+  width: 400px; }
+
+.hoursSelect {
+  margin: 0 auto;
+  width: 100px; }
+
+.minutesSelect {
+  margin: 0 auto;
+  width: 100px; }
+
+.tomorrowPlan {
+  margin: 0 auto;
+  text-align: center; }
+
+.makeItHappen {
+  font-family: 'Arvo', serif;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 5%;
+  font-size: 2rem;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  margin-top: 5%;
+  width: 85%;
+  margin-left: 7.5%; }
+
+.tomorrowHeading {
+  padding-bottom: 5%; }
+
+.arrivalHoursSelect {
+  margin-right: 2%; }
+
+.arrivalMinutesSelect {
+  margin-right: 2%; }
+
+.arrivalMeridiamSelect {
+  margin-right: 2%; }
 
 /********* weather *********/
 /*
@@ -155,8 +241,7 @@ h3 {
   font-style: normal; }
 #weather {
   margin: 0px auto;
-  text-align: center;
-  text-transform: uppercase; }
+  text-align: center; }
 
 i {
   color: #fff;
@@ -363,6 +448,140 @@ i {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 
+.sk-fading-circle {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative; }
+
+.sk-fading-circle .sk-circle {
+  width: 100%;
+  height: 100%;
+  position: absolute; }
+
+.hidden {
+  display: none; }
+
+.sk-fading-circle .sk-circle:before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: #fff;
+  border-radius: 100%;
+  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+  animation: sk-circleFadeDelay 1.2s infinite ease-in-out both; }
+
+.sk-fading-circle .sk-circle2 {
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg); }
+
+.sk-fading-circle .sk-circle3 {
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg); }
+
+.sk-fading-circle .sk-circle4 {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg); }
+
+.sk-fading-circle .sk-circle5 {
+  -webkit-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg); }
+
+.sk-fading-circle .sk-circle6 {
+  -webkit-transform: rotate(150deg);
+  -ms-transform: rotate(150deg);
+  transform: rotate(150deg); }
+
+.sk-fading-circle .sk-circle7 {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg); }
+
+.sk-fading-circle .sk-circle8 {
+  -webkit-transform: rotate(210deg);
+  -ms-transform: rotate(210deg);
+  transform: rotate(210deg); }
+
+.sk-fading-circle .sk-circle9 {
+  -webkit-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  transform: rotate(240deg); }
+
+.sk-fading-circle .sk-circle10 {
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg); }
+
+.sk-fading-circle .sk-circle11 {
+  -webkit-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  transform: rotate(300deg); }
+
+.sk-fading-circle .sk-circle12 {
+  -webkit-transform: rotate(330deg);
+  -ms-transform: rotate(330deg);
+  transform: rotate(330deg); }
+
+.sk-fading-circle .sk-circle2:before {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s; }
+
+.sk-fading-circle .sk-circle3:before {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s; }
+
+.sk-fading-circle .sk-circle4:before {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s; }
+
+.sk-fading-circle .sk-circle5:before {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s; }
+
+.sk-fading-circle .sk-circle6:before {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s; }
+
+.sk-fading-circle .sk-circle7:before {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s; }
+
+.sk-fading-circle .sk-circle8:before {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s; }
+
+.sk-fading-circle .sk-circle9:before {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s; }
+
+.sk-fading-circle .sk-circle10:before {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s; }
+
+.sk-fading-circle .sk-circle11:before {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s; }
+
+.sk-fading-circle .sk-circle12:before {
+  -webkit-animation-delay: -0.1s;
+  animation-delay: -0.1s; }
+
+@-webkit-keyframes sk-circleFadeDelay {
+  0%, 39%, 100% {
+    opacity: 0; }
+  40% {
+    opacity: 1; } }
+@keyframes sk-circleFadeDelay {
+  0%, 39%, 100% {
+    opacity: 0; }
+  40% {
+    opacity: 1; } }
 @media (max-width: 767px) {
   .fullscreen-bg {
     background: url("/Lake%20Shore%20Sunrise%20HD%20Looping%20Background%20by%20Motion%20Worship.mp4") center center/cover no-repeat; }

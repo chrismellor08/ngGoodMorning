@@ -16,10 +16,10 @@ GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window, 
   //  };
 
 
-  let getTodoList = (userId) => {
+  let getUserInfo = (userId) => {
     console.log("userId", userId);
     return $q( (resolve, reject) => {
-      $http.get(`${FirebaseUrl}todos.json?orderBy="uid"&equalTo="${userId}"`)
+      $http.get(`${FirebaseUrl}users.json?orderBy="uid"&equalTo="${userId}"`)
       .then( (todoData) => {
         resolve(todoData);
       })
@@ -90,5 +90,5 @@ GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window, 
     });
   };
 
-  return { getTodoList, postNewItem, deleteTodoItem, updateTodoStatus, getSingleTodoItem };
+  return { getUserInfo, postNewItem, deleteTodoItem, updateTodoStatus, getSingleTodoItem };
 });
