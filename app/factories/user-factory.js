@@ -1,12 +1,6 @@
 'use strict';
 
 GoodMorning.factory('UserFactory', function($q, $localStorage, $http, FirebaseUrl, FBCreds, geolocation) {
-
-let userInfo = [];
-let coords = {};
-let userData = $localStorage.name;
-
-$localStorage.name = "";
   var config = {
     apiKey: FBCreds.apiKey,
     authDomain: FBCreds.authDomain
@@ -14,19 +8,28 @@ $localStorage.name = "";
 
   firebase.initializeApp(config);
 
+  let userInfo = [];
+  let coords = {};
+  let userData = $localStorage.name;
+  let userId = "Test";
   let currentUser = null;
   let thisUser = null;
+  let thisId = null;
+
+
+  $localStorage.name = "";
+  $localStorage.userId = "";
+
+
   let isAuthenticated = function() {
-    console.log("isAuthenticated called");
+
     return new Promise( (resolve, reject) => {
-      console.log("firing onAuthStateChanged");
+
       firebase.auth().onAuthStateChanged(function(user) {
-        console.log("onAuthStateChanged finished");
+
         if (user) {
           $localStorage.name = user.displayName.split(" ")[0];
-          console.log("DATAA", userData);
-          console.log("user", user);
-          currentUser = user.uid;
+          $localStorage.userId = user.uid;
           resolve(true);
         } else {
           resolve(false);
@@ -36,7 +39,11 @@ $localStorage.name = "";
   };
 
   let getUser = () => {
-    return currentUser;
+    return $localStorage.userId;
+  };
+
+  let getName = () => {
+    return $localStorage.name;
   };
 
   let loginUser = () => {
@@ -44,14 +51,14 @@ $localStorage.name = "";
       let provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider)
       .then( (user) => {
+        thisId = user.user.uid;
         thisUser = user.additionalUserInfo.profile.given_name;
         userData = thisUser;
         $localStorage.name = thisUser;
-        console.log("mkay", $localStorage.name);
         currentUser = user.uid;
         userInfo.push(user);
         resolve(user);
-        return thisUser;
+        return [thisUser, thisId];
       })
       .catch( (err) => {
         reject(err);
@@ -72,17 +79,16 @@ $localStorage.name = "";
 //   };
 //
 
-  let getThisUser = () => {
-    return thisUser;
-  };
+let getThisUser = () => {
+  return thisUser;
+};
 
-  let logoutUser = () => {
-    return firebase.auth().signOut()
-    .catch( (err) => {
-      console.log("error logging out", err.message);
-    });
-  };
+let logoutUser = () => {
+  return firebase.auth().signOut()
+  .catch( (err) => {
+    console.log("error logging out", err.message);
+  });
+};
 
-  return {isAuthenticated, getUser, loginUser, logoutUser, getThisUser, userData};
-
+return {isAuthenticated, loginUser, logoutUser, getThisUser, getUser, getName, userData};
 });

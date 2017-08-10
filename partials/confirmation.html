@@ -1,5 +1,24 @@
-<h6>It will currently take you {{personalInfo.duration}} to get to {{newAlarmTime.whereImGoing}}. Since you need need {{newAlarmTime.bufferTime}} to get ready, and you need to be there by {{newAlarmTime.whenToBeThere}}, Your alarm has been set to {{personalInfo.finalAlarmTime}}!
-      <br><br>We will keep checking to see if it will take longer to get there due to traffic or weather and change your alarm time accordingly!<br><br>
-
-      Have a Good Morning!
-      </h6>
+<div ng-init="hubToday()"  class="hubContainer ng-cloak container" id="body" ng-style="{'background-image':'url({{newTodayHub.background}})'}">
+	<div id="weather">
+		<div class="container mainHub">
+			<a class="logout pull-right;" value="logout" placeholder="Logout" ng-click="logout()"><p>Logout</p></a>
+			<div class="hubHeading">
+				<h1 class="hubHeadingText">Good {{newTodayHub.greetingTime}}, {{newTodayHub.name}}</h1>
+			</div>
+			<div class="row">
+				<div class="timeContainer col-md-12">
+					{{newTodayHub.currentTime}}
+				</div>
+				<div>
+					<H1>You have an alarm set for {{alarms.alarmTime}}</H1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container todayContainer">
+					<div class="hubToday col-md-12 hvr-bounce-in" ng-click="tomorrow()">Change Your Plans
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

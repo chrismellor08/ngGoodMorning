@@ -17,11 +17,10 @@ GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window, 
 
 
   let getUserInfo = (userId) => {
-    console.log("userId", userId);
     return $q( (resolve, reject) => {
-      $http.get(`${FirebaseUrl}users.json?orderBy="uid"&equalTo="${userId}"`)
-      .then( (todoData) => {
-        resolve(todoData);
+      $http.get(`https://ng-goodmorning.firebaseio.com/morningdetails.json?orderBy="uid"&equalTo="${userId}"`)
+      .then( (alarmData) => {
+        resolve(alarmData.data);
       })
       .catch( (err) => {
         console.log("oops", err);
@@ -30,42 +29,11 @@ GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window, 
     });
   };
 
-  let postNewItem = (newItem) => {
-    return $q( (resolve, reject) => {
-      $http.post(`${FirebaseUrl}todos.json`,
-        angular.toJson(newItem))
-      .then( (newItemData) => {
-        resolve(newItemData);
-      })
-      .catch( (err) => {
-        reject(err);
-      });
-    });
-  };
 
-  let updateTodoStatus = (todo) => {
+  let deleteOldAlarm = (userId) => {
     return $q( (resolve, reject) => {
-      let itemId = todo.id;
-      // PUT the entire obj to FB
-      if (itemId) {
-        $http.put(`${FirebaseUrl}todos/${itemId}.json`,
-          angular.toJson(todo))
-        .then( (data) => {
-          resolve(data);
-        })
-        .catch( (err) => {
-          reject(err);
-        });
-      } else {
-        console.log("I'm burned out for the day. Go home");
-      }
-    });
-  };
-
-  let deleteTodoItem = (todoId) => {
-    return $q( (resolve, reject) => {
-      if (todoId) {
-        $http.delete(`${FirebaseUrl}todos/${todoId}.json`)
+      if (userId) {
+        $http.delete(`$https://ng-goodmorning.firebaseio.com/morningdetails.json?orderBy="uid"&equalTo="${userId}"`)
         .then( (data) => {
           resolve(data);
         })
@@ -78,17 +46,6 @@ GoodMorning.factory("UserHubFactory", function($q, $http, FirebaseUrl, $window, 
     });
   };
 
-  let getSingleTodoItem = (itemId) => {
-    return $q( (resolve, reject) => {
-      $http.get(`${FirebaseUrl}todos/${itemId}.json`)
-      .then( (todo) => {
-        resolve(todo.data);
-      })
-      .catch( (err) => {
-        reject(err);
-      });
-    });
-  };
 
-  return { getUserInfo, postNewItem, deleteTodoItem, updateTodoStatus, getSingleTodoItem };
+  return {getUserInfo, deleteOldAlarm};
 });

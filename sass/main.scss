@@ -1,3 +1,6 @@
+::-webkit-any-link:hover,
+::-webkit-any-link:active { cursor: pointer; }
+
 body {
 	background-size: cover;
 	margin-bottom: 10%;
@@ -45,15 +48,17 @@ p {
 }
 
 .signInButton {
-  background-color: #fff;
-  opacity: 0.7;
+  background-color: transparent;
   width: 180px;
-   font-family: 'Dosis', sans-serif
+  font-family: 'Dosis', sans-serif;
+  color: #fff;
+  border: 2px solid white;
 }
 
 .signInButton:hover{
   background-color: #fff;
-  opacity: 0.9;
+  opacity: 0.7;
+  color: black;
 }
 
 /******************Main Hub*********************/
@@ -263,7 +268,7 @@ p {
 }
 
 .makeItHappen {
-  font-family: 'Arvo', serif;
+  font-family: 'Quicksand', sans-serif;
   border-radius: 10px;
   background: rgba(255,255,255,0.90);
   margin-bottom: 5%;

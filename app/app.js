@@ -19,7 +19,7 @@ GoodMorning.config( ($routeProvider) => {
   })
   .when('/userHub/confirmation', {
     templateUrl: 'partials/confirmation.html',
-    controller: 'AlarmController'
+    controller: 'UserHubController'
   })
   .otherwise('/');
 });

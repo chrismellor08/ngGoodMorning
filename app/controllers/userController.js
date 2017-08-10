@@ -1,6 +1,6 @@
 'use strict';
 
-GoodMorning.controller('UserController', function($scope, $routeParams, $window, UserFactory, UserNameFactory, UserHubFactory){
+GoodMorning.controller('UserController', function($scope, $routeParams, $window, UserFactory, UserHubFactory){
 
 $scope.user = {
   userid: ""
@@ -8,8 +8,8 @@ $scope.user = {
 
 
 
-$scope.userName = UserNameFactory.user.push();
-console.log("BLAM", $scope.userName);
+// $scope.userName = UserNameFactory.user.push();
+// console.log("BLAM", $scope.userName);
 
 
 

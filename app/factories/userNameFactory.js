@@ -2,10 +2,10 @@
 
 GoodMorning.factory('UserNameFactory', function(){
 
-	let user = [];
+	// let user = [];
 
 
-	return {
-	  user
-	};
+	// return {
+	//   user
+	// };
 });

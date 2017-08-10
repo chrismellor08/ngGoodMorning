@@ -1,8 +1,8 @@
-<div ng-init="hubToday()"  class="hubContainer ng-cloak container" id="body" ng-style="{'background-image':'url({{newTodayHub.background}})'}">
+<div ng-init="init()"  class="hubContainer ng-cloak container" id="body" ng-style="{'background-image':'url({{newTodayHub.background}})'}">
 	<div id="weather">
    <div class="container mainHub">
      <a class="logout pull-right;" ng-click="logout()"><p>Logout</p></a>
-     <div class="hubHeading">2
+     <div class="hubHeading">
       <h1 class="hubHeadingText">Good {{newTodayHub.greetingTime}}, {{newTodayHub.name}}</h1>
     </div>
   <div class="row">

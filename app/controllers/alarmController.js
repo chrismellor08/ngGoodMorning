@@ -7,162 +7,154 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
   var alarmSound = new Audio('/01%20Moving%20On%20and%20Getting%20Over.mp3');
   alarmSound.volume = 0.3;
 
-// if(localStorage.alarmTime){
-//   alarmTime = new Date(localStorage.alarmTime);
-//   turnAlarmOn();
-//   alarmButton.prop("disabled", false);
-//   alarmInput.timepicker('setTime', alarmTime);
-//   alarmClock.find('span').text(alarmInput.val());
-// }
-//
-$scope.personalInfo = {
-  greetingTime: "",
-  name: UserFactory.userData,
-  uid: "",
-  currentTime: "",
-  background: "",
-  finalAlarmTime: "",
-  duration: ""
-};
+  $scope.personalInfo = {
+    greetingTime: "",
+    name: UserFactory.getName(),
+    uid: UserFactory.getUser(),
+    currentTime: "",
+    background: "",
+    finalAlarmTime: "",
+    duration: ""
+  };
 
-$localStorage.name = UserFactory.userData;
+  $scope.newAlarmTime = {
+    whenToBeThere: "",
+    whereImAt: "",
+    whereImGoing: "",
+    bufferTime: "",
+    url: "",
+    alarmTime: null,
+    countdown: null
+  };
 
-if($scope.personalInfo.name !== ""){
-  $localStorage.name = $scope.personalInfo.name;
-}
+  $scope.bufferTime = {
+    hours: "",
+    minutes: ""
+  };
 
-$scope.bufferTime = {
-  hours: "",
-  minutes: ""
-};
+  $scope.arrivalTime = {
+    hour: "",
+    minute: "",
+    meridiam: ""
+  };
 
-$scope.arrivalTime = {
-  hour: "",
-  minute: "",
-  meridiam: ""
-};
+  $scope.timeToCompare = "";
 
-$scope.alarmHours = [
-{value: "00"},
-{value: "01"},
-{value: "02"},
-{value: "03"},
-{value: "04"},
-{value: "05"},
-{value: "06"},
-{value: "07"},
-{value: "08"},
-{value: "09"},
-{value: "10"},
-{value: "11"},
-{value: "12"}
-];
+  $localStorage.alarmTime = "";
+  $localStorage.name = UserFactory.userData;
 
-$scope.alarmMinutes = [
-{value: "00"},
-{value: "10"},
-{value: "20"},
-{value: "30"},
-{value: "40"},
-{value: "50"}
-];
+  if($scope.personalInfo.name !== ""){
+    $localStorage.name = $scope.personalInfo.name;
+  }
 
+  $scope.alarmHours = [
+  {value: "00"},
+  {value: "01"},
+  {value: "02"},
+  {value: "03"},
+  {value: "04"},
+  {value: "05"},
+  {value: "06"},
+  {value: "07"},
+  {value: "08"},
+  {value: "09"},
+  {value: "10"},
+  {value: "11"},
+  {value: "12"}
+  ];
 
+  $scope.alarmMinutes = [
+  {value: "00"},
+  {value: "10"},
+  {value: "20"},
+  {value: "30"},
+  {value: "40"},
+  {value: "50"}
+  ];
 
-$scope.newAlarmTime = {
-  whenToBeThere: "",
-  whereImAt: "",
-  whereImGoing: "",
-  bufferTime: "",
-  url: "",
-  alarmTime: null,
-  countdown: null
-};
+  $scope.arrivalHours = [
+  {value: "01"},
+  {value: "02"},
+  {value: "03"},
+  {value: "04"},
+  {value: "05"},
+  {value: "06"},
+  {value: "07"},
+  {value: "08"},
+  {value: "09"},
+  {value: "10"},
+  {value: "11"},
+  {value: "12"}
+  ];
 
-$scope.arrivalHours = [
-{value: "01"},
-{value: "02"},
-{value: "03"},
-{value: "04"},
-{value: "05"},
-{value: "06"},
-{value: "07"},
-{value: "08"},
-{value: "09"},
-{value: "10"},
-{value: "11"},
-{value: "12"}
-];
+  $scope.arrivalMinutes = [
+  {value: "00"},
+  {value: "05"},
+  {value: "10"},
+  {value: "15"},
+  {value: "20"},
+  {value: "25"},
+  {value: "30"},
+  {value: "35"},
+  {value: "40"},
+  {value: "45"},
+  {value: "50"},
+  {value: "55"}
+  ];
 
-
-$scope.arrivalMinutes = [
-{value: "00"},
-{value: "05"},
-{value: "10"},
-{value: "15"},
-{value: "20"},
-{value: "25"},
-{value: "30"},
-{value: "35"},
-{value: "40"},
-{value: "45"},
-{value: "50"},
-{value: "55"}
-];
-
-$scope.arrivalMeridiam = [
-{value: "AM"},
-{value: "PM"}
-];
+  $scope.arrivalMeridiam = [
+  {value: "AM"},
+  {value: "PM"}
+  ];
 
 
-let modal = new tingle.modal({
-  footer: true,
-  stickyFooter: false,
-  closeMethods: ['overlay', 'button', 'escape'],
-  closeLabel: "Close",
-  cssClass: ['custom-class-1', 'custom-class-2'],
-  onOpen: function() {
-  },
-  onClose: function() {
-  },
-  beforeClose: function() {
+  let modal = new tingle.modal({
+    footer: true,
+    stickyFooter: false,
+    closeMethods: ['overlay', 'button', 'escape'],
+    closeLabel: "Close",
+    cssClass: ['custom-class-1', 'custom-class-2'],
+    onOpen: function() {
+    },
+    onClose: function() {
+    },
+    beforeClose: function() {
         // here's goes some logic
         // e.g. save content before closing the modal
         return true; // close the modal
       }
     });
 
-$scope.loadScreen = () => {
-  var l = document.getElementById("loader");
-  l.classList.remove("hidden");
-  var h = document.getElementById("loadHide");
-  h.classList.add("hidden");
+  $scope.loadScreen = () => {
+    var l = document.getElementById("loader");
+    l.classList.remove("hidden");
+    var h = document.getElementById("loadHide");
+    h.classList.add("hidden");
     var c = document.getElementById("tomrrowContainer");
-  c.classList.add("layer");
-};
+    c.classList.add("layer");
+  };
 
-$scope.hideLoadScreen = () => {
-  var l = document.getElementById("loader");
-  l.classList.add("hidden");
-  var h = document.getElementById("loadHide");
-  h.classList.remove("hidden");
-  var c = document.getElementById("tomrrowContainer");
-  c.classList.remove("layer");
-};
+  $scope.hideLoadScreen = () => {
+    var l = document.getElementById("loader");
+    l.classList.add("hidden");
+    var h = document.getElementById("loadHide");
+    h.classList.remove("hidden");
+    var c = document.getElementById("tomrrowContainer");
+    c.classList.remove("layer");
+  };
 
-$scope.confirm = () => {
-  $window.location.href = "#!/userHub/";
-};
+  $scope.confirm = () => {
+    $window.location.href = "#!/userHub/confirmation";
+  };
 
-$scope.logout = () => {
-  UserFactory.logoutUser();
-};
+  $scope.logout = () => {
+    UserFactory.logoutUser();
+  };
 
-$scope.getTime = () => {
-//getting and formatting the time of day
-$scope.m = moment();
-let m = $scope.m;
+  $scope.getTime = () => {
+  //getting and formatting the time of day
+    $scope.m = moment();
+    let m = $scope.m;
     // let currentTime = "06:30pm";
     let currentTime = m.format("hh:mma");
     $scope.personalInfo.currentTime = currentTime;
@@ -189,9 +181,7 @@ let m = $scope.m;
     }
   };
 
-
   $scope.calculateTravelTime = function(){
-    AlarmFactory.postMorningObj($scope.newAlarmTime);
     let handleResponse = function(data)
     {
       $scope.newAlarmTime.whenToBeThere = $scope.arrivalTime.hour + ":" +$scope.arrivalTime.minute + $scope.arrivalTime.meridiam;
@@ -200,7 +190,6 @@ let m = $scope.m;
       // get moment and format as MM/DD/YYYY string
       let formattedTime = m.format("YYYY-MM-DD");
       let arrivalTime = formattedTime + " " + $scope.newAlarmTime.whenToBeThere;
-
       arrivalTime = moment(arrivalTime, "YYYY-MM-DD h:mma");
       let bufferTime = $scope.newAlarmTime.bufferTime;
       let newBufferTime = moment.duration(bufferTime);
@@ -211,18 +200,26 @@ let m = $scope.m;
       $scope.newAlarmTime.alarmTime = arrivalTime.subtract(timeToWake).set(0, 'seconds');
       let showTime = $scope.newAlarmTime.alarmTime;
       let timeToShow= showTime._d;
-      let myAlarmTime = moment(timeToShow).format("hh:mma");
+      console.log("TTS",timeToShow);
+      let f = moment();
+      let n = timeToShow;
+      let x = moment(n).isBefore(f);
+      if(x === true){
+        let z = moment(n).add(1, "day");
+        $scope.timeToCompare = z;
+        console.log(z);
+      }
+      let myAlarmTime = moment($scope.timeToCompare).format("hh:mma");
       $scope.personalInfo.finalAlarmTime = myAlarmTime;
-      modal.setContent(`<h6> It will currently take you ${$scope.personalInfo.duration} to get to ${$scope.newAlarmTime.whereImGoing}. Since you need need ${$scope.newAlarmTime.bufferTime} to get ready, and you need to be there by ${$scope.newAlarmTime.whenToBeThere}, Your alarm has been set to ${$scope.personalInfo.finalAlarmTime}!     <br><br>We will keep checking to see if it will take longer to get there due to traffic or weather and change your alarm time accordingly!<br><br>  Have a Good Morning!</h6>`);
-      modal.addFooterBtn('Sweet, Thanks!', 'tingle-btn tingle-btn--primary', function() {
+      modal.setContent(`<h2>You're all set!</h2><h2>Your alarm has been set to ${$scope.personalInfo.finalAlarmTime}!</h2><br><h5>It will currently take you ${$scope.personalInfo.duration} to get to ${$scope.newAlarmTime.whereImGoing}.<br> It looks like you need need ${$scope.newAlarmTime.bufferTime} to get ready, and you need to be there by ${$scope.newAlarmTime.whenToBeThere}.<br><br>We will keep checking to see if it will take longer to get there due to traffic or weather, and change your alarm time accordingly!<br><br>  Have a Good Morning!</h5>`);
+      modal.addFooterBtn('Sweet, Thanks!', 'tingle-btn tingle-btn--primary tingle-btn--pull-right', function() {
         $scope.confirm();
         modal.close();
       });
       modal.open();
+      $localStorage.alarmTime = $scope.personalInfo.finalAlarmTime;
+      AlarmFactory.postMorningObj($scope.personalInfo);
       $scope.hideLoadScreen();
-      // localStorage.setItem
-      // localStorage.alarmOn = true;
-      // localStorage.newAlarmTime.alarmTime = $scope.newAlarmTime.alarmTime;
     };
 
     $.ajax({
@@ -258,7 +255,7 @@ $scope.alarmInterval = $window.setInterval( () =>
   if($scope.newAlarmTime.alarmTime!==null)
   {
     let now = moment();
-    if(now.diff($scope.newAlarmTime.alarmTime, 'seconds') > 0)
+    if(now.diff($scope.timeToCompare, 'seconds') > 0)
     {
       alarmSound.play();
       $window.alert("GETUP!");
@@ -268,7 +265,6 @@ $scope.alarmInterval = $window.setInterval( () =>
           }
 
         }, 1000);
-
 
 $scope.alarmTimeFormatted =( () => {
   let at = $scope.newAlarmTime.alarmTime;
