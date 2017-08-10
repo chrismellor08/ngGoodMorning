@@ -21,13 +21,16 @@ GoodMorning.factory('AlarmFactory', function($q, $http, FirebaseUrl, FBCreds, $l
   });
 };
 
-
 let getRecentAlarmTime = (data) => {
   return $q( (resolve, reject) => {
     $http.get(`${FirebaseUrl}morningdetails/${thisAlarm}.json`,
       angular.toJson(data))
     .then( (oldAlarm) => {
+      if(oldAlarm){
       recentAlarm = oldAlarm.data.finalAlarmTime;
+    } else if (oldAlarm.data.finalAlarmTime === null) {
+        console.log("error");
+      }
       $localStorage.thisAlarm = oldAlarm.data.finalAlarmTime;
       resolve(oldAlarm);
     });
@@ -35,7 +38,7 @@ let getRecentAlarmTime = (data) => {
 };
 
 let testLocal = () => {
-  return $localStorage.thisAlarm;
+  return recentAlarm;
 };
 
 let getAlarmTime = () => {

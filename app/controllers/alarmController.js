@@ -4,7 +4,7 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
 
 
   $scope.Audio = Audio;
-  var alarmSound = new Audio('/01%20Moving%20On%20and%20Getting%20Over.mp3');
+  var alarmSound = new Audio('/Kanye%20West%20-%20Good%20Morning%20%281%29.mp3');
   alarmSound.volume = 0.3;
 
   $scope.personalInfo = {
@@ -119,6 +119,21 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
     onClose: function() {
     },
     beforeClose: function() {
+        return true; // close the modal
+      }
+    });
+
+  let alarmModal = new tingle.modal({
+    footer: true,
+    stickyFooter: false,
+    closeMethods: ['overlay', 'button', 'escape'],
+    closeLabel: "Close",
+    cssClass: ['custom-class-1', 'custom-class-2'],
+    onOpen: function() {
+    },
+    onClose: function() {
+    },
+    beforeClose: function() {
         // here's goes some logic
         // e.g. save content before closing the modal
         return true; // close the modal
@@ -147,14 +162,18 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
     $window.location.href = "#!/userHub/confirmation";
   };
 
+  $scope.backHome = () => {
+    $window.location.href = "#!/userHub/";
+  };
+
   $scope.logout = () => {
     UserFactory.logoutUser();
   };
 
   $scope.getTime = () => {
   //getting and formatting the time of day
-    $scope.m = moment();
-    let m = $scope.m;
+  $scope.m = moment();
+  let m = $scope.m;
     // let currentTime = "06:30pm";
     let currentTime = m.format("hh:mma");
     $scope.personalInfo.currentTime = currentTime;
@@ -208,28 +227,30 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
         let z = moment(n).add(1, "day");
         $scope.timeToCompare = z;
         console.log(z);
-      }
-      let myAlarmTime = moment($scope.timeToCompare).format("hh:mma");
-      $scope.personalInfo.finalAlarmTime = myAlarmTime;
-      modal.setContent(`<h2>You're all set!</h2><h2>Your alarm has been set to ${$scope.personalInfo.finalAlarmTime}!</h2><br><h5>It will currently take you ${$scope.personalInfo.duration} to get to ${$scope.newAlarmTime.whereImGoing}.<br> It looks like you need need ${$scope.newAlarmTime.bufferTime} to get ready, and you need to be there by ${$scope.newAlarmTime.whenToBeThere}.<br><br>We will keep checking to see if it will take longer to get there due to traffic or weather, and change your alarm time accordingly!<br><br>  Have a Good Morning!</h5>`);
-      modal.addFooterBtn('Sweet, Thanks!', 'tingle-btn tingle-btn--primary tingle-btn--pull-right', function() {
-        $scope.confirm();
-        modal.close();
-      });
-      modal.open();
-      $localStorage.alarmTime = $scope.personalInfo.finalAlarmTime;
-      AlarmFactory.postMorningObj($scope.personalInfo);
-      $scope.hideLoadScreen();
-    };
+      } else {
+       $scope.timeToCompare = timeToShow;
+     }
+     let myAlarmTime = moment($scope.timeToCompare).format("hh:mma");
+     $scope.personalInfo.finalAlarmTime = myAlarmTime;
+     modal.setContent(`<h2>You're all set!</h2><h2>Your alarm has been set to ${$scope.personalInfo.finalAlarmTime}!</h2><br><h5>It will currently take you ${$scope.personalInfo.duration} to get to ${$scope.newAlarmTime.whereImGoing}.<br> It looks like you need need ${$scope.newAlarmTime.bufferTime} to get ready, and you need to be there by ${$scope.newAlarmTime.whenToBeThere}.<br><br>We will keep checking to see if it will take longer to get there due to traffic or weather, and change your alarm time accordingly!<br><br>  Have a Good Morning!</h5>`);
+     modal.addFooterBtn('Sweet, Thanks!', 'tingle-btn tingle-btn--primary tingle-btn--pull-right', function() {
+      $scope.confirm();
+      modal.close();
+    });
+     modal.open();
+     $localStorage.alarmTime = $scope.personalInfo.finalAlarmTime;
+     AlarmFactory.postMorningObj($scope.personalInfo);
+     $scope.hideLoadScreen();
+   };
 
-    $.ajax({
-      url: $scope.newAlarmTime.url,
-      dataType: 'jsonp',
-      success: function(data) {
+   $.ajax({
+    url: $scope.newAlarmTime.url,
+    dataType: 'jsonp',
+    success: function(data) {
 
-      }
-    }).done(handleResponse);
-  };
+    }
+  }).done(handleResponse);
+ };
 
 
 //gets location and adds it as your starting point for the mapquest call
@@ -243,7 +264,7 @@ $scope.getLocation = () => {
     //get the location i'm currently at
     let wia = $scope.newAlarmTime.whereImAt.split(' ').join('%2C+').split(',').join('');
     //Get the time I need to leave(make an api call to mapquest to get route duration)
-    let url = `https://www.mapquestapi.com/directions/v2/route?key=iQGI2sxewb82LU7dJKLDo64XXVb06ZUL&from=${wia}&to=${wtg}&outFormat=json&ambiguities=ignore&routeType=fastest&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false`;
+    let url = `https://www.mapquestapi.com/directions/v2/route?key=iQGI2sxewb82LU7dJKLDo64XXVb06ZUL&from=${wia}&to=${wtg}&outFormat=json&ambiguities=ignore&routeType=fastest&useTraffic=true&timeType=1&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false`;
     $scope.newAlarmTime.url = url;
     $scope.calculateTravelTime();
   });
@@ -257,14 +278,21 @@ $scope.alarmInterval = $window.setInterval( () =>
     let now = moment();
     if(now.diff($scope.timeToCompare, 'seconds') > 0)
     {
-      alarmSound.play();
-      $window.alert("GETUP!");
-              // $scope.newAlarmTime.alarmTime(null);
-              // $scope.newAlarmTime.countdown(null);
-            }
-          }
+     $scope.timeToCompare = null;
+     alarmSound.play();
+     modal.setContent(`<style>
+      h1 {color:black; text-align: center;}</style><h1>Good Morning</h1><br><h3>It's time to wake up!</h3><style>
+      h1 {color:white;}</style>`);
+     modal.addFooterBtn('Sweet, Thanks!', 'tingle-btn tingle-btn--primary tingle-btn--pull-right', function() {
+      alarmSound.pause();
+      modal.close();
+      $scope.backHome();
+    });
+     modal.open();
+   }
+ }
 
-        }, 1000);
+}, 2000);
 
 $scope.alarmTimeFormatted =( () => {
   let at = $scope.newAlarmTime.alarmTime;

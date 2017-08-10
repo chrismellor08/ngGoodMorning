@@ -27,11 +27,6 @@ GoodMorning.controller("UserHubController", function($window, $scope, $interval,
     });
 
 
- $scope.alarms = {
-  alarmTime: AlarmFactory.testLocal()
-};
-
-
 $scope.alarmObj = "";
 
 
@@ -48,9 +43,13 @@ $scope.userAuth = () => {
   .then((data) => {
     $scope.getStoredAlarm();
 
-    //
   });
 };
+
+ $scope.alarms = {
+  alarmTime: AlarmFactory.testLocal()
+};
+
 
 if($scope.newTodayHub.name !== ""){
   $localStorage.name = $scope.newTodayHub.name;
@@ -60,11 +59,11 @@ if($scope.newTodayHub.name !== ""){
 
 
 
-// $localStorage.name = UserFactory.getThisUser();
+$localStorage.name = UserFactory.getThisUser();
 
-//   if($scope.newTodayHub.name === "") {
-//     $scope.newTodayHub.name = UserFactory.$localStorage.name;
-//   }
+  // if($scope.newTodayHub.name === "") {
+  //   $scope.newTodayHub.name = UserFactory.$localStorage.name;
+  // }
 
 //   $scope.newTodayHub.name = UserFactory.getUser();
 
@@ -152,7 +151,7 @@ let m = $scope.m;
   //runs the function at an interval to update the clock on the screen and the location of the user
   $interval(function(){
     $scope.hubToday();
-  }, 100000);
+  }, 1000);
 
 
   $scope.logout = () => {
