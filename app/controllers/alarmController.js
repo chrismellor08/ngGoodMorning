@@ -281,7 +281,7 @@ $scope.alarmInterval = $window.setInterval( () =>
      $scope.timeToCompare = null;
      alarmSound.play();
      modal.setContent(`<style>
-      h1 {color:black; text-align: center;}</style><h1>Good Morning</h1><br><h3>It's time to wake up!</h3><style>
+      h1 {color:black; text-align: center;}<div class="GMTEXT"></style><h1>Good Morning</h1></div><br><h3>It's time to wake up!</h3><style>
       h1 {color:white;}</style>`);
      modal.addFooterBtn('Sweet, Thanks!', 'tingle-btn tingle-btn--primary tingle-btn--pull-right', function() {
       alarmSound.pause();
