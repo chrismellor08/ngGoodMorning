@@ -5,7 +5,7 @@ GoodMorning.factory('UserFactory', function($q, $localStorage, $http, FirebaseUr
     apiKey: FBCreds.apiKey,
     authDomain: FBCreds.authDomain
   };
-
+   
   firebase.initializeApp(config);
 
   let userInfo = [];
