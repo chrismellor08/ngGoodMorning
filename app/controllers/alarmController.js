@@ -38,6 +38,11 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
     meridiam: ""
   };
 
+  $scope.coordsObj = {
+    lat: "",
+    lon: ""
+  }
+
   $scope.timeToCompare = "";
 
   $localStorage.alarmTime = "";
@@ -252,13 +257,24 @@ GoodMorning.controller('AlarmController', function($window, $scope, $interval, $
   }).done(handleResponse);
  };
 
+ $scope.getWeather = () => {
+    $.ajax({
+    url: `http://api.openweathermap.org/data/2.5/weather?lat=${scope.coordsObj.lat}&lon=${scope.coordsObj.long}&mode=json&units=imperial&APPID=b2ed93467dc91e371772b60e25afa697`
+    dataType: 'jsonp',
+    success: function(data) {
+    }
+  })
+  }
+
 
 //gets location and adds it as your starting point for the mapquest call
 $scope.getLocation = () => {
   $scope.loadScreen();
   geolocation.getLocation().then( (data) => {
-    let coordsObj = {lat:data.coords.latitude, long:data.coords.longitude};
-    let coords = coordsObj.lat + ", " + coordsObj.long;
+    $scope.coordsObj.lat = data.coords.latitude;
+    $scope.coordsObj.long = data.coords.longitude;
+    console.log($scope.coordsObj.lat);
+    let coords = $scope.coordsObj.lat + ", " + $scope.coordsObj.long;
     $scope.newAlarmTime.whereImAt = coords;
     let wtg = $scope.newAlarmTime.whereImGoing.split(' ').join('%2C+').split(',').join('');
     //get the location i'm currently at
